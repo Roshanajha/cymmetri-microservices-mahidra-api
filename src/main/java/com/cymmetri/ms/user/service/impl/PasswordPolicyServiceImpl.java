@@ -6,9 +6,9 @@ import com.cymmetri.common.passwordpolicy.dto.PasswordPolicyComposition;
 import com.cymmetri.common.passwordpolicy.dto.PasswordPolicyDto;
 import com.cymmetri.common.passwordpolicy.dto.PasswordPolicyResponse;
 import com.cymmetri.common.passwordpolicy.dto.PasswordPolicySearchResponse;
-import com.cymmetri.ms.user.auditaction.PasswordPolicyAddAudit;
-import com.cymmetri.ms.user.auditaction.PasswordPolicyCompostionRuleSaveAudit;
-import com.cymmetri.ms.user.auditaction.PasswordPolicySaveAudit;
+import com.cymmetri.ms.user.auditaction.passwordpolicy.PasswordPolicyAddAudit;
+import com.cymmetri.ms.user.auditaction.passwordpolicy.PasswordPolicyCompostionRuleSaveAudit;
+import com.cymmetri.ms.user.auditaction.passwordpolicy.PasswordPolicySaveAudit;
 import com.cymmetri.ms.user.service.PasswordPolicyService;
 
 import org.springframework.stereotype.Service;

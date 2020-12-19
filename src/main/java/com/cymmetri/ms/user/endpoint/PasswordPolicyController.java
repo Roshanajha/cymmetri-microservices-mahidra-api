@@ -37,7 +37,7 @@ public class PasswordPolicyController {
 	}
 
 	@PostMapping("update/{id}")
-	public ResponseEntity<Response> updatePasswordPolicy(@PathVariable("id") String id, @RequestBody PasswordPolicyDto passwordPolicyDto){
+	public ResponseEntity<Response> updatePasswordPolicy(@PathVariable(required = true) String id, @RequestBody PasswordPolicyDto passwordPolicyDto){
 		final PasswordPolicyResponse data = this.passwordPolicyService.update(id, passwordPolicyDto);
 		Response response = new Response();
 		response.succeed();
@@ -62,7 +62,7 @@ public class PasswordPolicyController {
 	}
 
 	@GetMapping("paswordchangedrule/{id}")
-	public ResponseEntity<Response> getPasswordChangedRule(@PathVariable String id){
+	public ResponseEntity<Response> getPasswordChangedRule(@PathVariable(required = true) String id){
 
 		final PasswordChangeRule data = this.passwordPolicyService.getPasswordChangedRule(id);
 
@@ -73,7 +73,7 @@ public class PasswordPolicyController {
 	}
 
 	@PostMapping("savepasswordcompositionrule/{id}")
-	public ResponseEntity<Response> savePasswordCompositionRule(@PathVariable String id, @RequestBody PasswordPolicyComposition passwordPolicyComposition){
+	public ResponseEntity<Response> savePasswordCompositionRule(@PathVariable(required = true) String id, @RequestBody PasswordPolicyComposition passwordPolicyComposition){
 		final PasswordPolicyComposition data = this.passwordPolicyService.savePasswordCompositionRule(id, passwordPolicyComposition);
 		Response response = new Response();
 		response.succeed();

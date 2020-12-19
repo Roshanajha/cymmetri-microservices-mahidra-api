@@ -1,3 +1,7 @@
 package com.cymmetri.ms.user.service;
-public class UnlockUserService {
+
+
+public interface UnlockUserService {
+
+	Boolean unlockUser(String login);
 }

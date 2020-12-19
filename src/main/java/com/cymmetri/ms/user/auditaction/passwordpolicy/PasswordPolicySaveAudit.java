@@ -12,7 +12,7 @@
  * without prior written permission of Unotech Software is strictly prohibited.
  */
 
-package com.cymmetri.ms.user.auditaction;
+package com.cymmetri.ms.user.auditaction.passwordpolicy;
 
 import com.cymmetri.common.audit.AbstractAuditBuilder;
 import com.cymmetri.common.audit.AuditLogResult;
