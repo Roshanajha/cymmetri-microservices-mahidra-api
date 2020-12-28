@@ -11,29 +11,24 @@
  * the information or anything described therein. Any use, disclosure, or reproduction
  * without prior written permission of Unotech Software is strictly prohibited.
  */
-package com.cymmetri.common.passwordpolicy.dto;
+package com.cymmetri.common.resetpassword.dto;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import org.springframework.data.mongodb.core.index.Indexed;
-
+/*
+ * @author roshan
+ */
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class PasswordPolicyDto {
+public class ResetPasswordRequest {
 
-	@Indexed(unique = true)
-	@NotBlank(message = "Null or Empty value is not allowed")
-	private String name;
+	private String userName;
 
-	@NotBlank(message = "Null or Empty value is not allowed")
-	private String description;
-
-	@NotNull(message = "Null value is not allowed")
-	private Boolean isDefault;
-
-	@NotNull(message = "Null value is not allowed")
-	private Boolean active;
+	private String newPassword;
 
 }

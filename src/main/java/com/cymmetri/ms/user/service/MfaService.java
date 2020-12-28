@@ -11,15 +11,12 @@
  * the information or anything described therein. Any use, disclosure, or reproduction
  * without prior written permission of Unotech Software is strictly prohibited.
  */
-package com.cymmetri.common.passwordpolicy.dto;
+package com.cymmetri.ms.user.service;
 
-import java.util.List;
+import com.cymmetri.ms.user.dto.AdminRemoveRegisteredMfaRequestDto;
 
-import lombok.Data;
+public interface MfaService {
 
-@Data
-public class PasswordPolicySearchResponse {
-
-	private List<PasswordPolicyResponse> content;
+	Boolean mfaConfig(AdminRemoveRegisteredMfaRequestDto mfaRequest);
 
 }

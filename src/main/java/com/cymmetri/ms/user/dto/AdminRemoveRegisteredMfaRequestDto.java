@@ -11,29 +11,21 @@
  * the information or anything described therein. Any use, disclosure, or reproduction
  * without prior written permission of Unotech Software is strictly prohibited.
  */
-package com.cymmetri.common.passwordpolicy.dto;
+package com.cymmetri.ms.user.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.cymmetri.common.mfa.enums.MfaType;
 import lombok.Data;
 
-import org.springframework.data.mongodb.core.index.Indexed;
-
 @Data
-public class PasswordPolicyDto {
+public class AdminRemoveRegisteredMfaRequestDto {
 
-	@Indexed(unique = true)
-	@NotBlank(message = "Null or Empty value is not allowed")
-	private String name;
+	@NotBlank
+	private String login;
 
-	@NotBlank(message = "Null or Empty value is not allowed")
-	private String description;
-
-	@NotNull(message = "Null value is not allowed")
-	private Boolean isDefault;
-
-	@NotNull(message = "Null value is not allowed")
-	private Boolean active;
+	@NotNull
+	private MfaType mfaType;
 
 }

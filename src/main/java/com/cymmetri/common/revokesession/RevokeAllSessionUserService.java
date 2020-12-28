@@ -11,10 +11,9 @@
  * the information or anything described therein. Any use, disclosure, or reproduction
  * without prior written permission of Unotech Software is strictly prohibited.
  */
-package com.cymmetri.common.ssis;
+package com.cymmetri.common.revokesession;
 
 import com.cymmetri.ms.user.dto.Response;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.http.ResponseEntity;
@@ -22,27 +21,24 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class SsisService {
+public class RevokeAllSessionUserService {
 
-	private final SsisClient ssisClient;
+	private final RevokeAllSessionUserClient revokeAllSessionUserClient;
 
-	private final ObjectMapper mapper;
-
-	public SsisService(SsisClient ssisClient, ObjectMapper mapper) {
-		this.ssisClient = ssisClient;
-		this.mapper = mapper;
+	public RevokeAllSessionUserService(RevokeAllSessionUserClient revokeAllSessionUserClient) {
+		this.revokeAllSessionUserClient = revokeAllSessionUserClient;
 	}
 
-	public void callSsisService() {
+	public Boolean revokeAllSessionForUser(String login) {
 
-		ResponseEntity<Response> responseEntity;
-		try {
-			responseEntity = this.ssisClient.unAssignApplicationToUser();
+		ResponseEntity<Response> responseEntity = this.revokeAllSessionUserClient.resetPassword(login);
+		Response response = responseEntity.getBody();
+
+		if (response.getSuccess()) {
+			return true;
 		}
-		catch (Exception exception) {
-			log.info("... encountered error during application assignment {} ...", exception);
-			return;
-		}
+
+		return false;
 	}
 
 }

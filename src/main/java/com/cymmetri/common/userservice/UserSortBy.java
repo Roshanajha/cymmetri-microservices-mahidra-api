@@ -11,29 +11,29 @@
  * the information or anything described therein. Any use, disclosure, or reproduction
  * without prior written permission of Unotech Software is strictly prohibited.
  */
-package com.cymmetri.common.passwordpolicy.dto;
+package com.cymmetri.common.userservice;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-import lombok.Data;
+/**
+ * The enum User sort by.
+ * @author unotech .
+ */
 
-import org.springframework.data.mongodb.core.index.Indexed;
+@Getter
+@ApiModel
+@AllArgsConstructor
+public enum UserSortBy {
 
-@Data
-public class PasswordPolicyDto {
+	/** The first name. */
+	FIRST_NAME("firstName"),
 
-	@Indexed(unique = true)
-	@NotBlank(message = "Null or Empty value is not allowed")
-	private String name;
+	/** The email. */
+	EMAIL("email");
 
-	@NotBlank(message = "Null or Empty value is not allowed")
-	private String description;
-
-	@NotNull(message = "Null value is not allowed")
-	private Boolean isDefault;
-
-	@NotNull(message = "Null value is not allowed")
-	private Boolean active;
+	/** The field name. */
+	private String fieldName;
 
 }

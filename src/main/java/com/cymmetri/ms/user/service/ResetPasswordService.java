@@ -11,15 +11,10 @@
  * the information or anything described therein. Any use, disclosure, or reproduction
  * without prior written permission of Unotech Software is strictly prohibited.
  */
-package com.cymmetri.common.passwordpolicy.dto;
+package com.cymmetri.ms.user.service;
 
-import java.util.List;
+public interface ResetPasswordService {
 
-import lombok.Data;
-
-@Data
-public class PasswordPolicySearchResponse {
-
-	private List<PasswordPolicyResponse> content;
+	String resetPassword(String resetPassword);
 
 }

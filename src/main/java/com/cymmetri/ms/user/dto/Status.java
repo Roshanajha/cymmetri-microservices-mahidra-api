@@ -11,18 +11,26 @@
  * the information or anything described therein. Any use, disclosure, or reproduction
  * without prior written permission of Unotech Software is strictly prohibited.
  */
-package com.cymmetri.common.ssis;
+package com.cymmetri.ms.user.dto;
 
-import com.cymmetri.ms.user.dto.Response;
+/**
+ * The Enum Status.
+ *
+ * @author unotech .
+ */
+public enum Status {
 
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+	/** The activated. */
+	ACTIVE,
+	/** The activated with application. */
+	ACTIVE_WITH_APPLICATION,
 
-@FeignClient(name = "ssissrvcclient", url = "${cymmetri.ssissrvc.api}")
-public interface SsisClient {
+	/** The INACTIVE. */
+	INACTIVE,
+	/** The INACTIVE with application. */
+	INACTIVE_WITH_APPLICATION,
 
-	@GetMapping("syncdata")
-	ResponseEntity<Response> unAssignApplicationToUser();
+	/** The DELETE. */
+	DELETE;
 
 }

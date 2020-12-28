@@ -11,15 +11,33 @@
  * the information or anything described therein. Any use, disclosure, or reproduction
  * without prior written permission of Unotech Software is strictly prohibited.
  */
-package com.cymmetri.common.passwordpolicy.dto;
 
-import java.util.List;
+package com.cymmetri.common.mfa.enums;
 
-import lombok.Data;
+public enum MfaType {
 
-@Data
-public class PasswordPolicySearchResponse {
+	/**
+	 * {@code CYMMETRI_AUTHENTICATOR}.
+	 */
+	CymmetriAuthenticator,
 
-	private List<PasswordPolicyResponse> content;
+	/**
+	 * {@code SMSAuthenticator}.
+	 */
+	SMSAuthenticator,
+
+	/**
+	 * {@code PushAuthenticator}.
+	 */
+	PushAuthenticator,
+
+	/**
+	 * {@code SecretQuestions}.
+	 */
+	SecretQuestions,
+	/**
+	 * {@code GoogleAuthenticator}.
+	 */
+	GoogleAuthenticator;
 
 }

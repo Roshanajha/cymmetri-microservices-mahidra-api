@@ -12,40 +12,40 @@
  * without prior written permission of Unotech Software is strictly prohibited.
  */
 
-package com.cymmetri.ms.user.auditaction;
+package com.cymmetri.ms.user.auditaction.revokeallsession;
 
 import com.cymmetri.common.audit.AbstractAuditBuilder;
 import com.cymmetri.common.audit.AuditLogResult;
 
-public class PasswordPolicySaveAudit extends AbstractAuditBuilder {
+public class RevokeAllSessionAudit extends AbstractAuditBuilder {
 
 	/**
 	 * "SOURCE_TYPE" qualifier.
 	 */
-	public static final String SOURCE_TYPE = "PASSWORD_POLICY";
+	public static final String SOURCE_TYPE = "USER";
 
 	/**
 	 * "TARGET_TYPE" qualifier.
 	 */
-	public static final String TARGET_TYPE = "";
+	public static final String TARGET_TYPE = "USER";
 
 	/**
-	 * "PASSWORD_POLICY_SAVE" qualifier.
+	 * "AUTH_POLICY_ADD" qualifier.
 	 */
-	public static final String PASSWORD_POLICY_SAVE = "PASSWORD_POLICY_SAVE";
+	public static final String ALL_SESSION_REVOKE = "ALL_SESSION_REVOKE";
 
 	/**
 	 * "DESC_FAIL" qualifier.
 	 */
-	public static final String DESC_FAIL = "Password policy update failed.";
+	public static final String DESC_FAIL = "Revoking of all sessions failed.";
 
 	/**
 	 * "DESC_PASS" qualifier.
 	 */
-	public static final String DESC_PASS = "Password policy updated successfully.";
+	public static final String DESC_PASS = "All sessions revoked successfully.";
 
-	public PasswordPolicySaveAudit() {
-		super(PASSWORD_POLICY_SAVE, SOURCE_TYPE, TARGET_TYPE);
+	public RevokeAllSessionAudit() {
+		super(ALL_SESSION_REVOKE, SOURCE_TYPE, TARGET_TYPE);
 	}
 
 	AuditLogResult auditLogResult = AuditLogResult.FAIL;

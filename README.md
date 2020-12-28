@@ -1,4 +1,4 @@
-# cymmetri-microservices-sample
+# cymmetri-microservices-mahindra-api
 
 This is a sample application developed to demonstrates-
   - audit-service configuration

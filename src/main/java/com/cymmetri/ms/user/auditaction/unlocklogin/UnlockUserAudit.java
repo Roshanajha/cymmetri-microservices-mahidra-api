@@ -12,17 +12,17 @@
  * without prior written permission of Unotech Software is strictly prohibited.
  */
 
-package com.cymmetri.ms.user.auditaction;
+package com.cymmetri.ms.user.auditaction.unlocklogin;
 
 import com.cymmetri.common.audit.AbstractAuditBuilder;
 import com.cymmetri.common.audit.AuditLogResult;
 
-public class PasswordPolicyAddAudit extends AbstractAuditBuilder {
+public class UnlockUserAudit extends AbstractAuditBuilder {
 
 	/**
 	 * "SOURCE_TYPE" qualifier.
 	 */
-	public static final String SOURCE_TYPE = "PASSWORD_POLICY";
+	public static final String SOURCE_TYPE = "USER";
 
 	/**
 	 * "TARGET_TYPE" qualifier.
@@ -30,22 +30,22 @@ public class PasswordPolicyAddAudit extends AbstractAuditBuilder {
 	public static final String TARGET_TYPE = "";
 
 	/**
-	 * "PASSWORD_POLICY_ADD" qualifier.
+	 * "AUTH_POLICY_ADD" qualifier.
 	 */
-	public static final String PASSWORD_POLICY_ADD = "PASSWORD_POLICY_ADD";
+	public static final String UNLOCK_USER = "UNLOCK_USER";
 
 	/**
 	 * "DESC_FAIL" qualifier.
 	 */
-	public static final String DESC_FAIL = "Password policy add failed.";
+	public static final String DESC_FAIL = "User unlock failed.";
 
 	/**
 	 * "DESC_PASS" qualifier.
 	 */
-	public static final String DESC_PASS = "Password policy added successfully.";
+	public static final String DESC_PASS = "User unlocked successfully.";
 
-	public PasswordPolicyAddAudit() {
-		super(PASSWORD_POLICY_ADD, SOURCE_TYPE, TARGET_TYPE);
+	public UnlockUserAudit() {
+		super(UNLOCK_USER, SOURCE_TYPE, TARGET_TYPE);
 	}
 
 	AuditLogResult auditLogResult = AuditLogResult.FAIL;

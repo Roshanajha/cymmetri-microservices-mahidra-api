@@ -11,15 +11,19 @@
  * the information or anything described therein. Any use, disclosure, or reproduction
  * without prior written permission of Unotech Software is strictly prohibited.
  */
-package com.cymmetri.common.passwordpolicy.dto;
+package com.cymmetri.common.unlocklogin;
 
-import java.util.List;
+import com.cymmetri.ms.user.dto.Response;
 
-import lombok.Data;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
-@Data
-public class PasswordPolicySearchResponse {
+@FeignClient(name = "unlockloginclient", url = "${cymmetri.authsrvc.api}")
+public interface UnlockLoginClient {
 
-	private List<PasswordPolicyResponse> content;
+	@PostMapping("auth/unlockLogin/{login}")
+	ResponseEntity<Response> unlockLogin(@PathVariable String login);
 
 }

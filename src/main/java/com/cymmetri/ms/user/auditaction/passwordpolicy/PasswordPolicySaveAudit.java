@@ -12,12 +12,12 @@
  * without prior written permission of Unotech Software is strictly prohibited.
  */
 
-package com.cymmetri.ms.user.auditaction;
+package com.cymmetri.ms.user.auditaction.passwordpolicy;
 
 import com.cymmetri.common.audit.AbstractAuditBuilder;
 import com.cymmetri.common.audit.AuditLogResult;
 
-public class PasswordPolicyCompostionRuleSaveAudit extends AbstractAuditBuilder {
+public class PasswordPolicySaveAudit extends AbstractAuditBuilder {
 
 	/**
 	 * "SOURCE_TYPE" qualifier.
@@ -30,22 +30,22 @@ public class PasswordPolicyCompostionRuleSaveAudit extends AbstractAuditBuilder 
 	public static final String TARGET_TYPE = "";
 
 	/**
-	 * "PASSWORD_POLICY_COMPOSITION_RULE_SAVE" qualifier.
+	 * "PASSWORD_POLICY_SAVE" qualifier.
 	 */
-	public static final String PASSWORD_POLICY_COMPOSITION_RULE_SAVE = "PASSWORD_POLICY_COMPOSITION_RULE_SAVE";
+	public static final String PASSWORD_POLICY_SAVE = "PASSWORD_POLICY_SAVE";
 
 	/**
 	 * "DESC_FAIL" qualifier.
 	 */
-	public static final String DESC_FAIL = "Password policy composition rule update failed.";
+	public static final String DESC_FAIL = "Password policy update failed.";
 
 	/**
 	 * "DESC_PASS" qualifier.
 	 */
-	public static final String DESC_PASS = "Password policy composition rule updated successfully.";
+	public static final String DESC_PASS = "Password policy updated successfully.";
 
-	public PasswordPolicyCompostionRuleSaveAudit() {
-		super(PASSWORD_POLICY_COMPOSITION_RULE_SAVE, SOURCE_TYPE, TARGET_TYPE);
+	public PasswordPolicySaveAudit() {
+		super(PASSWORD_POLICY_SAVE, SOURCE_TYPE, TARGET_TYPE);
 	}
 
 	AuditLogResult auditLogResult = AuditLogResult.FAIL;
