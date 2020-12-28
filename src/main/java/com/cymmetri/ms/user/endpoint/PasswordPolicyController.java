@@ -36,6 +36,17 @@ public class PasswordPolicyController {
 		return ResponseEntity.ok().body(response);
 	}
 
+	@GetMapping("{id}")
+	public ResponseEntity<Response> getPasswordPolicyById(@PathVariable(required = true) String id){
+
+		final PasswordPolicyDto data = this.passwordPolicyService.getPasswordPolicyById(id);
+
+		Response response = new Response();
+		response.succeed();
+		response.setData(data);
+		return ResponseEntity.ok().body(response);
+	}
+
 	@PostMapping("update/{id}")
 	public ResponseEntity<Response> updatePasswordPolicy(@PathVariable(required = true) String id, @RequestBody PasswordPolicyDto passwordPolicyDto){
 		final PasswordPolicyResponse data = this.passwordPolicyService.update(id, passwordPolicyDto);

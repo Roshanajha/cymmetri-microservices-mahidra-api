@@ -14,6 +14,8 @@ public interface PasswordPolicyService {
 
 	PasswordPolicySearchResponse search(String name, Integer pageNo, Integer size, String sortBy, String order);
 
+	PasswordPolicyDto getPasswordPolicyById(String id);
+
 	PasswordChangeRule getPasswordChangedRule(String id);
 
 	PasswordPolicyComposition savePasswordCompositionRule(String id, PasswordPolicyComposition passwordPolicyComposition);

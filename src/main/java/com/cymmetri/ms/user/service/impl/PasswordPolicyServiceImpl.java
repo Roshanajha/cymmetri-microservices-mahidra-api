@@ -76,6 +76,17 @@ public class PasswordPolicyServiceImpl implements PasswordPolicyService {
 	}
 
 	@Override
+	public PasswordPolicyDto getPasswordPolicyById(String id) {
+		try {
+			return this.passwordPolicyService.getPasswordPolicyById(id);
+		}
+		catch (Exception exception){
+			log.error("Exception Thrown :- ",exception);
+			throw exception;
+		}
+	}
+
+	@Override
 	public PasswordChangeRule getPasswordChangedRule(String id) {
 		try {
 			return this.passwordPolicyService.getPasswordChangedRule(id);

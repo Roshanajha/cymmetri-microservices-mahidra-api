@@ -26,6 +26,10 @@ public interface PasswordPolicyClient {
 												  @RequestParam("size") Integer size,
 												  @RequestParam("sortBy") String sortBy, @RequestParam("order") String order);
 
+
+	@GetMapping("passwordPolicy/getPolicy/{id}")
+	ResponseEntity<Response> getPasswordPolicyById(@PathVariable String id);
+
 	@GetMapping("passwordPolicy/getPasswordChangeRule/{id}")
 	ResponseEntity<Response> getPasswordChangedRule(@PathVariable String id);
 

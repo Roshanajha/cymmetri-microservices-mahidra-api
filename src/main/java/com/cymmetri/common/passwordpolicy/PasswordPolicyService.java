@@ -69,6 +69,20 @@ public class PasswordPolicyService {
 		return passwordPolicySearchResponse;
 	}
 
+	public PasswordPolicyDto getPasswordPolicyById(String id){
+		PasswordPolicyDto passwordPolicyDto = null;
+		ResponseEntity<Response> responseEntity = this.passwordPolicyClient.getPasswordPolicyById(id);
+		Response response = responseEntity.getBody();
+
+		if (response.getSuccess()) {
+			ObjectMapper mapper = new ObjectMapper();
+			mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, Boolean.FALSE);
+			passwordPolicyDto = mapper.convertValue(response.getData(), PasswordPolicyDto.class);
+		}
+
+		return passwordPolicyDto;
+	}
+
 	public PasswordChangeRule getPasswordChangedRule(String id){
 		PasswordChangeRule passwordChangeRule = null;
 		ResponseEntity<Response> responseEntity = this.passwordPolicyClient.getPasswordChangedRule(id);
