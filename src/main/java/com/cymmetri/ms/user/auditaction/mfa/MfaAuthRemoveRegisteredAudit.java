@@ -42,7 +42,7 @@ public class MfaAuthRemoveRegisteredAudit extends AbstractAuditBuilder {
 	/**
 	 * "DESC_PASS" qualifier.
 	 */
-	public static final String DESC_PASS = "Cymmetri Authenticator Registration Removed Successfully.";
+	public static final String DESC_PASS = "MFA Registration Removed Successfully.";
 
 	public MfaAuthRemoveRegisteredAudit() {
 		super(MFA_AUTH_REMOVE_REGISTERED, SOURCE_TYPE, TARGET_TYPE);

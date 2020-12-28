@@ -27,7 +27,7 @@ public class MfaController {
 	}
 
 	@PostMapping("remove")
-	public ResponseEntity<Response> revokeSession(@Valid @RequestBody AdminRemoveRegisteredMfaRequestDto mfaRequest){
+	public ResponseEntity<Response> remove(@Valid @RequestBody AdminRemoveRegisteredMfaRequestDto mfaRequest){
 		Response response = new Response();
 		response.succeed();
 		response.setData(this.mfaService.mfaConfig(mfaRequest));
