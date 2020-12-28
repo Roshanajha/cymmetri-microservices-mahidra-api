@@ -13,22 +13,21 @@
  */
 package com.cymmetri.common.userservice;
 
+import java.util.Objects;
+
 import com.cymmetri.common.search.Search;
 import com.cymmetri.common.search.SortDirection;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.ObjectUtils;
-import org.springframework.data.domain.Sort.Direction;
-
-import java.util.Objects;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.ObjectUtils;
+
+import org.springframework.data.domain.Sort.Direction;
 
 /**
  * The type User list dto.

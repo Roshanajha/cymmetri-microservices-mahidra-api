@@ -1,4 +1,21 @@
+/*
+ * Copyright (c) 2020 Unotech Software Pvt. Ltd.
+ *
+ * All Rights Reserved.
+ *
+ * The software contained on this media is written by  Unotech Software Pvt. Ltd. and
+ * is proprietary to and embodies the confidential technology of Unotech Software.
+ *
+ * The possession or receipt of this information does not convey any right to disclose
+ * its contents, reproduce it, or use, or license the use, for manufacture or sale,
+ * the information or anything described therein. Any use, disclosure, or reproduction
+ * without prior written permission of Unotech Software is strictly prohibited.
+ */
 package com.cymmetri.ms.user.service.impl;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.cymmetri.common.audit.AuditService;
 import com.cymmetri.common.mfa.dto.AdminRemoveRegisteredMfaRequest;
@@ -9,15 +26,10 @@ import com.cymmetri.common.userservice.UserSortBy;
 import com.cymmetri.ms.user.auditaction.mfa.MfaAuthRemoveRegisteredAudit;
 import com.cymmetri.ms.user.dto.AdminRemoveRegisteredMfaRequestDto;
 import com.cymmetri.ms.user.service.MfaService;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
@@ -29,7 +41,8 @@ public class MfaServiceImpl implements MfaService {
 
 	private final UserService userService;
 
-	public MfaServiceImpl(com.cymmetri.common.mfa.MfaService mfaService, AuditService auditService, UserService userService) {
+	public MfaServiceImpl(com.cymmetri.common.mfa.MfaService mfaService, AuditService auditService,
+			UserService userService) {
 		this.mfaService = mfaService;
 		this.auditService = auditService;
 		this.userService = userService;
@@ -40,8 +53,7 @@ public class MfaServiceImpl implements MfaService {
 
 		String userId = getUserId(mfaRequest.getLogin());
 		AdminRemoveRegisteredMfaRequest adminRemoveRegisteredMfaRequest = AdminRemoveRegisteredMfaRequest.builder()
-				.userId(userId)
-				.mfaType(mfaRequest.getMfaType()).build();
+				.userId(userId).mfaType(mfaRequest.getMfaType()).build();
 
 		MfaAuthRemoveRegisteredAudit auditBuilder = new MfaAuthRemoveRegisteredAudit();
 		Boolean status;
@@ -50,8 +62,8 @@ public class MfaServiceImpl implements MfaService {
 			auditBuilder.sourceId(mfaRequest.getLogin());
 			auditBuilder.succeed();
 		}
-		catch (Exception exception){
-			log.error("Exception :- ",exception);
+		catch (Exception exception) {
+			log.error("Exception :- ", exception);
 			auditBuilder.fail();
 			throw exception;
 		}
@@ -74,4 +86,5 @@ public class MfaServiceImpl implements MfaService {
 
 		return this.userService.getUserId(userListDto);
 	}
+
 }

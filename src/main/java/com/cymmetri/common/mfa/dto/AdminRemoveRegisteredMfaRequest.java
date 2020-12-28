@@ -14,11 +14,10 @@
 
 package com.cymmetri.common.mfa.dto;
 
-import com.cymmetri.common.mfa.enums.MfaType;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.cymmetri.common.mfa.enums.MfaType;
 import lombok.Builder;
 import lombok.Data;
 

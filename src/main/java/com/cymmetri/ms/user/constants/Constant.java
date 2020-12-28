@@ -13,11 +13,10 @@
  */
 package com.cymmetri.ms.user.constants;
 
-
-import com.cymmetri.ms.user.dto.Status;
-
 import java.util.Arrays;
 import java.util.List;
+
+import com.cymmetri.ms.user.dto.Status;
 
 /**
  * The type Constant.

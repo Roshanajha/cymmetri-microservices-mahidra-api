@@ -13,20 +13,19 @@
  */
 package com.cymmetri.common.userservice;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import com.cymmetri.ms.user.dto.Response;
 import com.cymmetri.ms.user.dto.UserListResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Map;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service

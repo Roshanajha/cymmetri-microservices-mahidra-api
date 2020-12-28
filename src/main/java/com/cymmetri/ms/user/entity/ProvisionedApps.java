@@ -13,13 +13,12 @@
  */
 package com.cymmetri.ms.user.entity;
 
+import java.util.List;
+
 import com.querydsl.core.annotations.PropertyType;
 import com.querydsl.core.annotations.QueryEmbeddable;
 import com.querydsl.core.annotations.QueryEmbedded;
 import com.querydsl.core.annotations.QueryType;
-
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

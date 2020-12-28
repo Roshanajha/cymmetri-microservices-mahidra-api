@@ -13,7 +13,6 @@
  */
 package com.cymmetri.common.userservice;
 
-
 import com.cymmetri.ms.user.dto.Response;
 
 import org.springframework.cloud.openfeign.FeignClient;

@@ -13,13 +13,12 @@
  */
 package com.cymmetri.common.passwordpolicy.dto;
 
-import org.springframework.data.mongodb.core.index.Indexed;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import org.springframework.data.mongodb.core.index.Indexed;
 
 @Data
 public class PasswordPolicyDto {

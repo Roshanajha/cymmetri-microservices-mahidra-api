@@ -21,10 +21,9 @@ import com.cymmetri.common.session.PrincipalContext;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
-
 import org.apache.commons.collections4.MapUtils;
-
 import org.apache.commons.lang3.StringUtils;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 
@@ -39,8 +38,8 @@ public class FeignClientInterceptor implements RequestInterceptor {
 		Map<String, String> headers = MapUtils.emptyIfNull(principal.getHeaders());
 
 		for (Map.Entry<String, String> header : headers.entrySet()) {
-			log.info("key {} and value {} is ",header.getKey(), header.getValue());
-			if (Objects.equals(header.getKey(),HttpHeaders.USER_AGENT)){
+			log.info("key {} and value {} is ", header.getKey(), header.getValue());
+			if (Objects.equals(header.getKey(), HttpHeaders.USER_AGENT)) {
 				log.info("... modifying userAgent from header ... ");
 				header.setValue(StringUtils.join(header.getValue(), "-", "INTERNAL_API_CALL"));
 			}

@@ -13,10 +13,9 @@
  */
 package com.cymmetri.ms.user.entity;
 
-import com.querydsl.core.annotations.QueryEmbeddable;
-
 import java.time.LocalDateTime;
 
+import com.querydsl.core.annotations.QueryEmbeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,8 +34,8 @@ import lombok.Setter;
 public class Login {
 
 	public Login(String login, String pass, String status, int pwdChangeCount, int authFailCount,
-                 boolean isForceChangePassword, LocalDateTime createdTimeStamp, LocalDateTime modifiedTimeStamp,
-                 LocalDateTime lastLoginTime, LocalDateTime prevLoginTime) {
+			boolean isForceChangePassword, LocalDateTime createdTimeStamp, LocalDateTime modifiedTimeStamp,
+			LocalDateTime lastLoginTime, LocalDateTime prevLoginTime) {
 		this.login = login;
 		this.password = pass;
 		this.status = status;

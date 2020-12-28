@@ -13,18 +13,16 @@
  */
 package com.cymmetri.ms.user.dto;
 
-import com.cymmetri.ms.user.entity.ProvisionedApps;
-import com.cymmetri.ms.user.entity.User;
-
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import com.cymmetri.ms.user.entity.ProvisionedApps;
+import com.cymmetri.ms.user.entity.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * The Class UserListResponse.
