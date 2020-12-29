@@ -1,0 +1,41 @@
+api: /v1/runner/{project}/services/{id}/{version}
+meta:
+  id: mahindrapisrvc
+  project: unotech
+  version: v1
+spec:
+  affinity: []
+  labels: {}
+  scale:
+    concurrency: 50
+    maxReplicas: 100
+    minReplicas: 1
+    mode: parallel
+    replicas: 1
+  tasks:
+    - docker:
+        cmd: []
+        image: 172.30.23.231:32000/unotech-mahindrapi:release-prod-20201229-mh
+        imagePullPolicy: always
+        secret: ""
+      env: {}
+      id: uiapisrvc
+      ports:
+        - name: http
+          port: 8080
+          protocol: http
+        - name: tcp
+          port: 8089
+          protocol: tcp
+      resources:
+        cpu: 250
+        memory: 512
+      runtime: image
+      secrets: ["mahindrapisrvc"]
+  upstreams:
+    - projectId: unotech
+      service: '*'
+  whitelists:
+    - projectId: unotech
+      service: '*'
+type: service
