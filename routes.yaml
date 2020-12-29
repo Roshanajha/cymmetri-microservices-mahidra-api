@@ -1,6 +1,6 @@
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: removemfaPOST
+  id: mahindrwrapperapisrvcremovemfaPOST
   project: unotech
 spec:
   modify:
@@ -18,7 +18,7 @@ spec:
     methods:
       - 'POST'
     port: 0
-    rewrite: api/v1/mfaconfig/remove
+    rewrite: /api/v1/mfaconfig/remove
     type: exact
     url: /mahindrwrapperapisrvc/mfaconfig/remove
   targets:
@@ -32,7 +32,7 @@ type: ingress-route
 ---
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: createpasswordpolicyPOST
+  id: mahindrwrapperapisrvcpasswordpolicysave
   project: unotech
 spec:
   modify:
@@ -50,7 +50,7 @@ spec:
     methods:
       - 'POST'
     port: 0
-    rewrite: api/v1/passwordpolicy/save
+    rewrite: /api/v1/passwordpolicy/save
     type: exact
     url: /mahindrwrapperapisrvc/passwordpolicy/save
   targets:
@@ -64,7 +64,7 @@ type: ingress-route
 ---
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: createpasswordpolicyPOST
+  id: mahindrwrapperapisrvcpasswordpolicy
   project: unotech
 spec:
   modify:
@@ -82,7 +82,7 @@ spec:
     methods:
       - 'GET'
     port: 0
-    rewrite: api/v1/passwordpolicy/
+    rewrite: /api/v1/passwordpolicy/
     type: exact
     url: /mahindrwrapperapisrvc/passwordpolicy/
   targets:
@@ -96,7 +96,7 @@ type: ingress-route
 ---
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: createpasswordpolicyPOST
+  id: mahindrwrapperapisrvcpasswordpolicyupdate
   project: unotech
 spec:
   modify:
@@ -114,7 +114,7 @@ spec:
     methods:
       - 'POST'
     port: 0
-    rewrite: api/v1/passwordpolicy/update/
+    rewrite: /api/v1/passwordpolicy/update/
     type: exact
     url: /mahindrwrapperapisrvc/passwordpolicy/update/
   targets:
@@ -128,7 +128,7 @@ type: ingress-route
 ---
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: createpasswordpolicyPOST
+  id: mahindrwrapperapisrvcpasswordpolicysearch
   project: unotech
 spec:
   modify:
@@ -146,7 +146,7 @@ spec:
     methods:
       - 'GET'
     port: 0
-    rewrite: api/v1/passwordpolicy/search
+    rewrite: /api/v1/passwordpolicy/search
     type: exact
     url: /mahindrwrapperapisrvc/passwordpolicy/search
   targets:
@@ -160,7 +160,7 @@ type: ingress-route
 ---
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: createpasswordpolicyPOST
+  id: mahindrwrapperapisrvcpasswordpolicypaswordchangedrule
   project: unotech
 spec:
   modify:
@@ -178,7 +178,7 @@ spec:
     methods:
       - 'GET'
     port: 0
-    rewrite: api/v1/passwordpolicy/paswordchangedrule/
+    rewrite: /api/v1/passwordpolicy/paswordchangedrule/
     type: exact
     url: /mahindrwrapperapisrvc/passwordpolicy/paswordchangedrule/
   targets:
@@ -192,7 +192,7 @@ type: ingress-route
 ---
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: createpasswordpolicyPOST
+  id: mahindrwrapperapisrvcpasswordpolicysavepasswordcompositionrule
   project: unotech
 spec:
   modify:
@@ -210,7 +210,7 @@ spec:
     methods:
       - 'POST'
     port: 0
-    rewrite: api/v1/passwordpolicy/savepasswordcompositionrule/
+    rewrite: /api/v1/passwordpolicy/savepasswordcompositionrule/
     type: exact
     url: /mahindrwrapperapisrvc/passwordpolicy/savepasswordcompositionrule/
   targets:
@@ -224,7 +224,7 @@ type: ingress-route
 ---
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: createpasswordpolicyPOST
+  id: mahindrwrapperapisrvcresetpassword
   project: unotech
 spec:
   modify:
@@ -242,7 +242,7 @@ spec:
     methods:
       - 'POST'
     port: 0
-    rewrite: api/v1/resetpassword/
+    rewrite: /api/v1/resetpassword/
     type: exact
     url: /mahindrwrapperapisrvc/resetpassword/
   targets:
@@ -256,7 +256,7 @@ type: ingress-route
 ---
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: createpasswordpolicyPOST
+  id: mahindrwrapperapisrvcrevokesession
   project: unotech
 spec:
   modify:
@@ -274,7 +274,7 @@ spec:
     methods:
       - 'GET'
     port: 0
-    rewrite: api/v1/revokesession/
+    rewrite: /api/v1/revokesession/
     type: exact
     url: /mahindrwrapperapisrvc/revokesession/
   targets:
@@ -288,7 +288,7 @@ type: ingress-route
 ---
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: createpasswordpolicyPOST
+  id: mahindrwrapperapisrvcunlockuser
   project: unotech
 spec:
   modify:
