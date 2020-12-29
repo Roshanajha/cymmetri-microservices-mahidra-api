@@ -1,0 +1,320 @@
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: removemfaPOST
+  project: unotech
+spec:
+  modify:
+    headers: []
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: allow
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'POST'
+    port: 0
+    rewrite: api/v1/mfaconfig/remove
+    type: exact
+    url: /mahindrapisrvc/mfaconfig/remove
+  targets:
+    - host: mahindrapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: createpasswordpolicyPOST
+  project: unotech
+spec:
+  modify:
+    headers: []
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: allow
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'POST'
+    port: 0
+    rewrite: api/v1/passwordpolicy/save
+    type: exact
+    url: /mahindrapisrvc/passwordpolicy/save
+  targets:
+    - host: mahindrapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: createpasswordpolicyPOST
+  project: unotech
+spec:
+  modify:
+    headers: []
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: allow
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'GET'
+    port: 0
+    rewrite: api/v1/passwordpolicy/
+    type: exact
+    url: /mahindrapisrvc/passwordpolicy/
+  targets:
+    - host: mahindrapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: createpasswordpolicyPOST
+  project: unotech
+spec:
+  modify:
+    headers: []
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: allow
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'POST'
+    port: 0
+    rewrite: api/v1/passwordpolicy/update/
+    type: exact
+    url: /mahindrapisrvc/passwordpolicy/update/
+  targets:
+    - host: mahindrapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: createpasswordpolicyPOST
+  project: unotech
+spec:
+  modify:
+    headers: []
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: allow
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'GET'
+    port: 0
+    rewrite: api/v1/passwordpolicy/search
+    type: exact
+    url: /mahindrapisrvc/passwordpolicy/search
+  targets:
+    - host: mahindrapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: createpasswordpolicyPOST
+  project: unotech
+spec:
+  modify:
+    headers: []
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: allow
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'GET'
+    port: 0
+    rewrite: api/v1/passwordpolicy/paswordchangedrule/
+    type: exact
+    url: /mahindrapisrvc/passwordpolicy/paswordchangedrule/
+  targets:
+    - host: mahindrapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: createpasswordpolicyPOST
+  project: unotech
+spec:
+  modify:
+    headers: []
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: allow
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'POST'
+    port: 0
+    rewrite: api/v1/passwordpolicy/savepasswordcompositionrule/
+    type: exact
+    url: /mahindrapisrvc/passwordpolicy/savepasswordcompositionrule/
+  targets:
+    - host: mahindrapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: createpasswordpolicyPOST
+  project: unotech
+spec:
+  modify:
+    headers: []
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: allow
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'POST'
+    port: 0
+    rewrite: api/v1/resetpassword/
+    type: exact
+    url: /mahindrapisrvc/resetpassword/
+  targets:
+    - host: mahindrapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: createpasswordpolicyPOST
+  project: unotech
+spec:
+  modify:
+    headers: []
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: allow
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'GET'
+    port: 0
+    rewrite: api/v1/revokesession/
+    type: exact
+    url: /mahindrapisrvc/revokesession/
+  targets:
+    - host: mahindrapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: createpasswordpolicyPOST
+  project: unotech
+spec:
+  modify:
+    headers: []
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: allow
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'POST'
+    port: 0
+    rewrite: /api/v1/unlockuser/
+    type: exact
+    url: /mahindrapisrvc/unlockuser/
+  targets:
+    - host: mahindrapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
