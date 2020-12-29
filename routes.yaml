@@ -83,7 +83,7 @@ spec:
       - 'GET'
     port: 0
     rewrite: /api/v1/passwordpolicy/
-    type: exact
+    type: prefix
     url: /mahindrwrapperapisrvc/passwordpolicy/
   targets:
     - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
@@ -115,7 +115,7 @@ spec:
       - 'POST'
     port: 0
     rewrite: /api/v1/passwordpolicy/update/
-    type: exact
+    type: prefix
     url: /mahindrwrapperapisrvc/passwordpolicy/update/
   targets:
     - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
@@ -147,7 +147,7 @@ spec:
       - 'GET'
     port: 0
     rewrite: /api/v1/passwordpolicy/search
-    type: exact
+    type: prefix
     url: /mahindrwrapperapisrvc/passwordpolicy/search
   targets:
     - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
@@ -179,7 +179,7 @@ spec:
       - 'GET'
     port: 0
     rewrite: /api/v1/passwordpolicy/paswordchangedrule/
-    type: exact
+    type: prefix
     url: /mahindrwrapperapisrvc/passwordpolicy/paswordchangedrule/
   targets:
     - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
@@ -211,7 +211,7 @@ spec:
       - 'POST'
     port: 0
     rewrite: /api/v1/passwordpolicy/savepasswordcompositionrule/
-    type: exact
+    type: prefix
     url: /mahindrwrapperapisrvc/passwordpolicy/savepasswordcompositionrule/
   targets:
     - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
@@ -243,7 +243,7 @@ spec:
       - 'POST'
     port: 0
     rewrite: /api/v1/resetpassword/
-    type: exact
+    type: prefix
     url: /mahindrwrapperapisrvc/resetpassword/
   targets:
     - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
@@ -275,7 +275,7 @@ spec:
       - 'GET'
     port: 0
     rewrite: /api/v1/revokesession/
-    type: exact
+    type: prefix
     url: /mahindrwrapperapisrvc/revokesession/
   targets:
     - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
@@ -307,7 +307,7 @@ spec:
       - 'POST'
     port: 0
     rewrite: /api/v1/unlockuser/
-    type: exact
+    type: prefix
     url: /mahindrwrapperapisrvc/unlockuser/
   targets:
     - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
