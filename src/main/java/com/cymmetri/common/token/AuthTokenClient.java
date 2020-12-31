@@ -1,3 +1,4 @@
+/*
 package com.cymmetri.common.token;
 
 import com.cymmetri.common.resetpassword.dto.ResetPasswordRequest;
@@ -15,3 +16,4 @@ public interface AuthTokenClient {
 	ResponseEntity<Response> getAuthToken(@RequestBody ResetPasswordRequest resetPasswordRequest);
 
 }
+*/
