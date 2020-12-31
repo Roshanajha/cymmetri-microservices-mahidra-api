@@ -73,7 +73,7 @@ public class ChangePasswordServiceImpl implements ChangePasswordService {
 		log.info("... userId {} for the {} ", userId, changePassword.getUserName());
 		return changePasswordService.validatePassword(ValidatePassword.builder().
 				login(changePassword.getUserName()).
-				password(changePassword.getPassword()).
+				password(changePassword.getNewPassword()).
 				userId(userId).build());
 	}
 
