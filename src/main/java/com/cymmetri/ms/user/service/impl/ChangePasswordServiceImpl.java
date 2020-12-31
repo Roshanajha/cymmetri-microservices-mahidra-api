@@ -59,7 +59,7 @@ public class ChangePasswordServiceImpl implements ChangePasswordService {
 		}
 		finally {
 			Map<String, Object> eventAttribute = new HashMap<>();
-			eventAttribute.put("LOGIN", changePassword.getUsername());
+			eventAttribute.put("LOGIN", changePassword.getUserName());
 			auditBuilder.eventAttributes(eventAttribute);
 			this.auditService.log(auditBuilder.build());
 		}
@@ -69,10 +69,10 @@ public class ChangePasswordServiceImpl implements ChangePasswordService {
 	private Boolean validatePassword(ChangePassword changePassword){
 		log.info("... validate password service implementation ...");
 		log.info("... toString representation is changePassword Object {} ...",changePassword.toString());
-		String userId = getUserId(changePassword.getUsername());
-		log.info("... userId {} for the {} ", userId, changePassword.getUsername());
+		String userId = getUserId(changePassword.getUserName());
+		log.info("... userId {} for the {} ", userId, changePassword.getUserName());
 		return changePasswordService.validatePassword(ValidatePassword.builder().
-				login(changePassword.getUsername()).
+				login(changePassword.getUserName()).
 				password(changePassword.getPassword()).
 				userId(userId).build());
 	}
