@@ -34,6 +34,17 @@ public enum ErrorCode {
 	 * {@code TENANT_NOT_FOUND}.
 	 */
 	TENANT_NOT_FOUND,
+
+	/**
+	 * {@code PASSWORD_VALIDATION_FAILED}.
+	 */
+	PASSWORD_VALIDATION_FAILED,
+
+	/**
+	 * {@code CHANGE_PASSWORD_FAILED}.
+	 */
+	CHANGE_PASSWORD_FAILED,
+
 	/**
 	 * {@code EAMIL_EXISTS}.
 	 */

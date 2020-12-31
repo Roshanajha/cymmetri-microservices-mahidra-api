@@ -65,6 +65,12 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 		return buildResponseEntity(new Response(ex), HttpStatus.BAD_REQUEST);
 	}
 
+	@ExceptionHandler({ChangePasswordException.class, PasswordValidationException.class})
+	public ResponseEntity<Object> forbiddenException(Exception ex) {
+		this.log.error("Exception: ", ex);
+		return buildResponseEntity(new Response(ex), HttpStatus.FORBIDDEN);
+	}
+
 	/**
 	 * FeignException.
 	 * @param ex the FeignException
