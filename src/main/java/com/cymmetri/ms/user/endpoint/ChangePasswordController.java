@@ -8,8 +8,11 @@ import com.cymmetri.ms.user.service.ChangePasswordService;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,7 +28,7 @@ public class ChangePasswordController {
 	}
 
 	@PostMapping("/changepassword")
-	public ResponseEntity<Response> changePassword(ChangePassword changePassword) throws PasswordValidationException, ChangePasswordException {
+	public ResponseEntity<Response> changePassword(@Valid @RequestBody ChangePassword changePassword) throws PasswordValidationException, ChangePasswordException {
 
 		log.info("... changePassword controller ...");
 		Response response = new Response();
