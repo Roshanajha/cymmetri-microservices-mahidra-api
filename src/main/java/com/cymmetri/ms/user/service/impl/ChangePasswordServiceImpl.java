@@ -68,6 +68,7 @@ public class ChangePasswordServiceImpl implements ChangePasswordService {
 
 	private Boolean validatePassword(ChangePassword changePassword){
 		log.info("... validate password service implementation ...");
+		log.info("... toString representation is changePassword Object {} ...",changePassword.toString());
 		String userId = getUserId(changePassword.getUsername());
 		log.info("... userId {} for the {} ", userId, changePassword.getUsername());
 		return changePasswordService.validatePassword(ValidatePassword.builder().
