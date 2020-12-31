@@ -318,3 +318,35 @@ spec:
       weight: 100
 type: ingress-route
 ---
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: mahindrwrapperapisrvcunlockuser
+  project: unotech
+spec:
+  modify:
+    headers: []
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: allow
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'POST'
+    port: 0
+    rewrite: /api/v1/changepassword/changepassword
+    type: exact
+    url: /mahindrwrapperapisrvc/api/v1/changepassword/changepassword
+  targets:
+    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
