@@ -17,8 +17,11 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -27,9 +30,10 @@ import lombok.Setter;
  * @author unotech .
  */
 
-@Getter
-@Setter
+@Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class AssignGroupDTO {
 
 	/** The group ids. */
