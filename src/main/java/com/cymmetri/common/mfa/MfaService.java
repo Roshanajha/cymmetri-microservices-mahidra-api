@@ -14,7 +14,13 @@
 package com.cymmetri.common.mfa;
 
 import com.cymmetri.common.mfa.dto.AdminRemoveRegisteredMfaRequest;
+import com.cymmetri.common.mfa.dto.ListOfMfaUserDto;
+import com.cymmetri.common.mfa.dto.UserIdRequest;
+import com.cymmetri.common.mfaexcludeduser.dto.GetRuleByIdResponse;
 import com.cymmetri.ms.user.dto.Response;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.http.ResponseEntity;
@@ -40,6 +46,21 @@ public class MfaService {
 		}
 
 		return false;
+	}
+
+	public ListOfMfaUserDto listOfMfaUser(UserIdRequest userId) {
+		ListOfMfaUserDto listOfMfaUser = null;
+		ResponseEntity<Response> responseEntity;
+		responseEntity = this.mfaClient.listMfaForUser(userId);
+		Response response = responseEntity.getBody();
+
+		if (response.getSuccess()) {
+			ObjectMapper mapper = new ObjectMapper();
+			mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, Boolean.FALSE);
+			listOfMfaUser = mapper.convertValue(response.getData(), ListOfMfaUserDto.class);
+		}
+
+		return listOfMfaUser;
 	}
 
 }

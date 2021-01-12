@@ -19,6 +19,8 @@ import java.util.Map;
 
 import com.cymmetri.common.audit.AuditService;
 import com.cymmetri.common.mfa.dto.AdminRemoveRegisteredMfaRequest;
+import com.cymmetri.common.mfa.dto.ListOfMfaUserDto;
+import com.cymmetri.common.mfa.dto.UserIdRequest;
 import com.cymmetri.common.userservice.UserFilterDto;
 import com.cymmetri.common.userservice.UserListDto;
 import com.cymmetri.common.userservice.UserService;
@@ -77,7 +79,15 @@ public class MfaServiceImpl implements MfaService {
 		return status;
 	}
 
-	public String getUserId(String login) {
+    @Override
+    public ListOfMfaUserDto listOfMfaUser(String login) {
+		String userId = getUserId(login);
+		UserIdRequest userIdRequest = new UserIdRequest();
+		userIdRequest.setUserId(userId);
+        return this.mfaService.listOfMfaUser(userIdRequest);
+    }
+
+    public String getUserId(String login) {
 
 		UserListDto userListDto = UserListDto.builder().direction(Sort.Direction.ASC).pageNumber(0).pageSize(1)
 				.sort(UserSortBy.FIRST_NAME)

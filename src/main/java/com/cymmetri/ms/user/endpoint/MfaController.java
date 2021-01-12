@@ -20,6 +20,8 @@ import com.cymmetri.ms.user.dto.Response;
 import com.cymmetri.ms.user.service.MfaService;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +42,14 @@ public class MfaController {
 		Response response = new Response();
 		response.succeed();
 		response.setData(this.mfaService.mfaConfig(mfaRequest));
+		return ResponseEntity.ok().body(response);
+	}
+
+	@GetMapping("listofmfa/user/{login}")
+	public ResponseEntity<Response> listOfMfaUser(@PathVariable String login) {
+		Response response = new Response();
+		response.succeed();
+		response.setData(this.mfaService.listOfMfaUser(login));
 		return ResponseEntity.ok().body(response);
 	}
 

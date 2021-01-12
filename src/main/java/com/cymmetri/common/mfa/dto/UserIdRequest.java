@@ -11,15 +11,17 @@
  * the information or anything described therein. Any use, disclosure, or reproduction
  * without prior written permission of Unotech Software is strictly prohibited.
  */
-package com.cymmetri.ms.user.service;
 
-import com.cymmetri.common.mfa.dto.ListOfMfaUserDto;
-import com.cymmetri.ms.user.dto.AdminRemoveRegisteredMfaRequestDto;
+package com.cymmetri.common.mfa.dto;
 
-public interface MfaService {
+import javax.validation.constraints.NotBlank;
 
-	Boolean mfaConfig(AdminRemoveRegisteredMfaRequestDto mfaRequest);
+import lombok.Data;
 
-	ListOfMfaUserDto listOfMfaUser(String login);
+@Data
+public class UserIdRequest {
+
+	@NotBlank
+	private String userId;
 
 }
