@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/resetpassword")
+@RequestMapping("resetpassword")
 public class ResetPasswordController {
 
 	private final ResetPasswordService resetPasswordService;
@@ -32,7 +32,7 @@ public class ResetPasswordController {
 		this.resetPasswordService = resetPasswordService;
 	}
 
-	@PostMapping("{login}")
+	@PostMapping("/{login}")
 	public ResponseEntity<Response> resetPassword(@PathVariable(required = true) String login) {
 
 		final String resetPassword = this.resetPasswordService.resetPassword(login);

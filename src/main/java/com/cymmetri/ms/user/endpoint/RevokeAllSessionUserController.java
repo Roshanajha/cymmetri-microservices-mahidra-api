@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/revokesession")
+@RequestMapping("revokesession")
 public class RevokeAllSessionUserController {
 
 	private final com.cymmetri.ms.user.service.RevokeAllSessionUserService revokeAllSessionUserService;
@@ -32,7 +32,7 @@ public class RevokeAllSessionUserController {
 		this.revokeAllSessionUserService = revokeAllSessionUserService;
 	}
 
-	@GetMapping("{login}")
+	@GetMapping("/{login}")
 	public ResponseEntity<Response> revokeSession(@PathVariable(required = true) String login) {
 		Response response = new Response();
 		response.succeed();

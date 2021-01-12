@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/passwordpolicy")
+@RequestMapping("passwordpolicy")
 public class PasswordPolicyController {
 
 	private final com.cymmetri.ms.user.service.PasswordPolicyService passwordPolicyService;
@@ -40,7 +40,7 @@ public class PasswordPolicyController {
 		this.passwordPolicyService = passwordPolicyService;
 	}
 
-	@PostMapping("save")
+	@PostMapping("/save")
 	public ResponseEntity<Response> saveNewPasswordPolicy(@RequestBody PasswordPolicyDto passwordPolicyDto) {
 		final PasswordPolicyResponse data = this.passwordPolicyService.create(passwordPolicyDto);
 		Response response = new Response();
@@ -49,7 +49,7 @@ public class PasswordPolicyController {
 		return ResponseEntity.ok().body(response);
 	}
 
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Response> getPasswordPolicyById(@PathVariable(required = true) String id) {
 
 		final PasswordPolicyDto data = this.passwordPolicyService.getPasswordPolicyById(id);
@@ -60,7 +60,7 @@ public class PasswordPolicyController {
 		return ResponseEntity.ok().body(response);
 	}
 
-	@PostMapping("update/{id}")
+	@PostMapping("/update/{id}")
 	public ResponseEntity<Response> updatePasswordPolicy(@PathVariable(required = true) String id,
 			@RequestBody PasswordPolicyDto passwordPolicyDto) {
 		final PasswordPolicyResponse data = this.passwordPolicyService.update(id, passwordPolicyDto);
@@ -70,7 +70,7 @@ public class PasswordPolicyController {
 		return ResponseEntity.ok().body(response);
 	}
 
-	@GetMapping("search")
+	@GetMapping("/search")
 	public ResponseEntity<Response> searchPasswordPolicy(
 			final @RequestParam(required = false, value = "name") String name,
 			final @RequestParam(required = false, value = "pageNo", defaultValue = "0") Integer pageNo,
@@ -86,7 +86,7 @@ public class PasswordPolicyController {
 		return ResponseEntity.ok().body(response);
 	}
 
-	@GetMapping("paswordchangedrule/{id}")
+	@GetMapping("/paswordchangedrule/{id}")
 	public ResponseEntity<Response> getPasswordChangedRule(@PathVariable(required = true) String id) {
 
 		final PasswordChangeRule data = this.passwordPolicyService.getPasswordChangedRule(id);
@@ -97,7 +97,7 @@ public class PasswordPolicyController {
 		return ResponseEntity.ok().body(response);
 	}
 
-	@PostMapping("savepasswordcompositionrule/{id}")
+	@PostMapping("/savepasswordcompositionrule/{id}")
 	public ResponseEntity<Response> savePasswordCompositionRule(@PathVariable(required = true) String id,
 			@RequestBody PasswordPolicyComposition passwordPolicyComposition) {
 		final PasswordPolicyComposition data = this.passwordPolicyService.savePasswordCompositionRule(id,

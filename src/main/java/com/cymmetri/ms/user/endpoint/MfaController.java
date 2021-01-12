@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/mfaconfig")
+@RequestMapping("mfaconfig")
 public class MfaController {
 
 	private final MfaService mfaService;
@@ -37,7 +37,7 @@ public class MfaController {
 		this.mfaService = mfaService;
 	}
 
-	@PostMapping("remove")
+	@PostMapping("/remove")
 	public ResponseEntity<Response> remove(@Valid @RequestBody AdminRemoveRegisteredMfaRequestDto mfaRequest) {
 		Response response = new Response();
 		response.succeed();
@@ -45,7 +45,7 @@ public class MfaController {
 		return ResponseEntity.ok().body(response);
 	}
 
-	@GetMapping("listofmfa/user/{login}")
+	@GetMapping("/user/{login}")
 	public ResponseEntity<Response> listOfMfaUser(@PathVariable String login) {
 		Response response = new Response();
 		response.succeed();

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1/unlockuser")
+@RequestMapping("unlockuser")
 public class UnlockUserController {
 
 	private final UnlockUserService unlockUserService;
@@ -32,7 +32,7 @@ public class UnlockUserController {
 		this.unlockUserService = unlockUserService;
 	}
 
-	@PostMapping("{login}")
+	@PostMapping("/{login}")
 	public ResponseEntity<Response> unlockLogin(@PathVariable(required = true) String login) {
 		Response response = new Response();
 		response.succeed();
