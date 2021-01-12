@@ -20,6 +20,6 @@ public interface MfaService {
 
 	Boolean mfaConfig(AdminRemoveRegisteredMfaRequestDto mfaRequest);
 
-	ListOfMfaUserDto listOfMfaUser(String login);
+	ListOfMfaUserDto[] listOfMfaUser(String login);
 
 }

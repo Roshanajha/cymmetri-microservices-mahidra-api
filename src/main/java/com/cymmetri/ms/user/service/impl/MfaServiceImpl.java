@@ -80,7 +80,7 @@ public class MfaServiceImpl implements MfaService {
 	}
 
     @Override
-    public ListOfMfaUserDto listOfMfaUser(String login) {
+    public ListOfMfaUserDto[] listOfMfaUser(String login) {
 		String userId = getUserId(login);
 		UserIdRequest userIdRequest = new UserIdRequest();
 		userIdRequest.setUserId(userId);
