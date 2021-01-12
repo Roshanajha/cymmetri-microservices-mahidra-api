@@ -32,6 +32,38 @@ type: ingress-route
 ---
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
+  id: mahindrwrapperapisrvclistofMfaUserGET
+  project: unotech
+spec:
+  modify:
+    headers: []
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: allow
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'POST'
+    port: 0
+    rewrite: /api/v1/mfaconfig/remove
+    type: prefix
+    url: /mahindrwrapperapisrvc/mfaconfig/user/
+  targets:
+    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
   id: mahindrwrapperapisrvcpasswordpolicysave
   project: unotech
 spec:
@@ -372,7 +404,7 @@ spec:
     port: 0
     rewrite: /api/v1/mfaexclusion/list/
     type: prefix
-    url: /mahindrwrapperapisrvc/api/v1/mfaexclusion/list/
+    url: /mahindrwrapperapisrvc/mfaexclusion/list/
   targets:
     - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
       port: 8080
@@ -404,7 +436,7 @@ spec:
     port: 0
     rewrite: /api/v1/mfaexclusion/assign/
     type: prefix
-    url: /mahindrwrapperapisrvc/api/v1/mfaexclusion/assign/
+    url: /mahindrwrapperapisrvc/mfaexclusion/assign/
   targets:
     - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
       port: 8080
@@ -436,7 +468,7 @@ spec:
     port: 0
     rewrite: /api/v1/mfaexclusion/unassign/
     type: prefix
-    url: /mahindrwrapperapisrvc/api/v1/mfaexclusion/unassign/
+    url: /mahindrwrapperapisrvc/mfaexclusion/unassign/
   targets:
     - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
       port: 8080
