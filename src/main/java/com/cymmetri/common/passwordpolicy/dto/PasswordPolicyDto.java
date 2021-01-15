@@ -23,7 +23,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 @Data
 public class PasswordPolicyDto {
 
-	@Indexed(unique = true)
 	@NotBlank(message = "Null or Empty value is not allowed")
 	private String name;
 

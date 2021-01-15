@@ -8,6 +8,7 @@ import com.cymmetri.common.userservice.UserService;
 import com.cymmetri.common.userservice.UserSortBy;
 import com.cymmetri.ms.user.auditaction.assignandunassignusergroup.AssignUserToGroupAudit;
 import com.cymmetri.ms.user.auditaction.assignandunassignusergroup.UnassignUserToGroupAudit;
+import com.cymmetri.ms.user.dto.UserListResponse;
 import com.cymmetri.ms.user.service.MfaExlusionService;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +23,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import lombok.extern.slf4j.Slf4j;
+
+
+//readme: two task to complete
+//set active true and defaultSelection false default in request
+// change api response for illegalArgument
 
 @Slf4j
 @Service
@@ -46,15 +52,33 @@ public class MfaExlusionServiceImpl implements MfaExlusionService {
 	}
 
 	@Override
-	public List<String> getUserNamesByRuleId(String ruleId) {
+	public List<String> getUserNamesByRuleId(String groupId) {
+
+		List<String> login = new ArrayList<>();
 
 		try {
-			return this.mfaExludedService.listExcludedUser(ruleId).getExcludedUserIDs().stream().map(idAndNameDto -> idAndNameDto.getName()).collect(Collectors.toList());
+			UserListDto userListDto = UserListDto.builder().direction(Sort.Direction.ASC).pageNumber(0).pageSize(1)
+					.sort(UserSortBy.FIRST_NAME)
+					.filters(UserFilterDto.builder().group(groupId).build()).build();
+
+			final ArrayList<UserListResponse> logins = this.userService.getUserLogins(userListDto);
+
+			for (UserListResponse userListResponse:
+				 logins) {
+				login.add(userListResponse.getLogin());
+			}
+/*
+			final List<String> listOfUserId = this.mfaExludedService.listExcludedUser(ruleId).getExcludedUserIDs().stream().map(idAndNameDto -> idAndNameDto.getId()).collect(Collectors.toList());
+			for (String userId:
+				 listOfUserId) {
+
+			}*/
 		}
 		catch (Exception ex){
 			log.error("Exception :- ", ex);
 			throw ex;
 		}
+		return login;
 	}
 
 	@Override

@@ -21,11 +21,11 @@ public class MfaExclusionController {
 	}
 
 
-	@GetMapping("/list/{ruleId}")
-	public ResponseEntity<Response> listExcludedUser(@PathVariable String ruleId){
+	@GetMapping("/list/{groupId}")
+	public ResponseEntity<Response> listExcludedUser(@PathVariable String groupId){
 		Response response = new Response();
 		response.succeed();
-		response.setData(this.mfaExlusionService.getUserNamesByRuleId(ruleId));
+		response.setData(this.mfaExlusionService.getUserNamesByRuleId(groupId));
 		return ResponseEntity.ok().body(response);
 	}
 
