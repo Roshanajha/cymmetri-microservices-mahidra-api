@@ -14,7 +14,7 @@
 package com.cymmetri.common.userservice;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.cymmetri.ms.user.dto.Response;
@@ -75,7 +75,7 @@ public class UserService {
 		return userId;
 	}
 
-	public ArrayList<UserListResponse> getUserLogins(UserListDto userListDto) {
+	public ArrayList<HashMap<String, Object>> getUserLogins(UserListDto userListDto) {
 
 		log.info("... userListDto toString representation for getUsers inside group ... " + userListDto.toString());
 
@@ -89,12 +89,12 @@ public class UserService {
 			throw new UnsupportedOperationException("Auto-generated method stub", ex);
 		}
 
-		ArrayList<UserListResponse> userListResponse = null;
+		ArrayList<HashMap<String, Object>> userListResponse = null;
 
 		try {
 			Map<String, Object> userListResponses = this.mapper.readValue(writeValueAsString, new TypeReference<>() {
 			});
-			userListResponse = (ArrayList<UserListResponse>) userListResponses
+			userListResponse = (ArrayList<HashMap<String, Object>>) userListResponses
 					.get("elements");
 			if (!userListResponse.isEmpty()) {
 				return userListResponse;

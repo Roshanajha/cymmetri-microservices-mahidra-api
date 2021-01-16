@@ -52,20 +52,20 @@ public class MfaExlusionServiceImpl implements MfaExlusionService {
 	}
 
 	@Override
-	public List<String> getUserNamesByRuleId(String groupId) {
+	public List<Object> getUserNamesByRuleId(String groupId) {
 
-		List<String> login = new ArrayList<>();
+		List<Object> login = new ArrayList<>();
 
 		try {
 			UserListDto userListDto = UserListDto.builder().direction(Sort.Direction.ASC).pageNumber(0).pageSize(1)
 					.sort(UserSortBy.FIRST_NAME)
 					.filters(UserFilterDto.builder().group(groupId).build()).build();
 
-			final ArrayList<UserListResponse> logins = this.userService.getUserLogins(userListDto);
+			final ArrayList<HashMap<String, Object>> logins = this.userService.getUserLogins(userListDto);
 
-			for (UserListResponse userListResponse:
+			for (HashMap<String, Object> userListResponse:
 				 logins) {
-				login.add(userListResponse.getLogin());
+				login.add(userListResponse.get("login"));
 			}
 /*
 			final List<String> listOfUserId = this.mfaExludedService.listExcludedUser(ruleId).getExcludedUserIDs().stream().map(idAndNameDto -> idAndNameDto.getId()).collect(Collectors.toList());

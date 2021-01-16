@@ -48,7 +48,7 @@ spec:
     hosts:
       - '*'
     methods:
-      - 'POST'
+      - 'GET'
     port: 0
     rewrite: /api/v1/mfaconfig/remove
     type: prefix
