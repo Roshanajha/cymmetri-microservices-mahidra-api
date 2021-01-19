@@ -57,7 +57,7 @@ public class MfaExlusionServiceImpl implements MfaExlusionService {
 		List<Object> login = new ArrayList<>();
 
 		try {
-			UserListDto userListDto = UserListDto.builder().direction(Sort.Direction.ASC).pageNumber(0).pageSize(1)
+			UserListDto userListDto = UserListDto.builder().direction(Sort.Direction.ASC).pageNumber(0).pageSize(Integer.MAX_VALUE)
 					.sort(UserSortBy.FIRST_NAME)
 					.filters(UserFilterDto.builder().group(groupId).build()).build();
 
