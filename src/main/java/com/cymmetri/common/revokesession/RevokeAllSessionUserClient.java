@@ -24,6 +24,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface RevokeAllSessionUserClient {
 
 	@GetMapping("session/revokeAllSessionForUser/{login}")
-	ResponseEntity<Response> resetPassword(@PathVariable(required = true) String login);
+	ResponseEntity<Response> revokeAllSession(@PathVariable(required = true) String login);
 
 }

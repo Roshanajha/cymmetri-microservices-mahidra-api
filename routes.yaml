@@ -1,24 +1,110 @@
+# mahindra wrapper changePassword Post Method Secure API
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: mahindrwrapperapisrvcremovemfaPOST
+  id: mahindrwrapperapisrvcchangepasswordPOST
   project: unotech
 spec:
   modify:
-    headers: []
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
     outputFormat: yaml
     requestTemplate: ""
     responseTemplate: ""
     template: go
   project: unotech
   rule:
-    rule: allow
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
   source:
     hosts:
       - '*'
     methods:
       - 'POST'
     port: 0
-    rewrite: /api/v1/mfaconfig/remove
+    rewrite: /changepassword/changepassword
+    type: exact
+    url: /mahindrwrapperapisrvc/changepassword/changepassword
+  targets:
+    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+# mahindra wrapper remove mfa of user Post Method Secure API
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: mahindrwrapperapisrvcremovemfaPOST
+  project: unotech
+spec:
+  modify:
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'POST'
+    port: 0
+    rewrite: /mfaconfig/remove
     type: exact
     url: /mahindrwrapperapisrvc/mfaconfig/remove
   targets:
@@ -30,27 +116,54 @@ spec:
       weight: 100
 type: ingress-route
 ---
+# mahindra wrapper list of mfa of user GET Method Secure API
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: mahindrwrapperapisrvclistofMfaUserGET
+  id: mahindrwrapperapisrvclistmfauserGET
   project: unotech
 spec:
   modify:
-    headers: []
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
     outputFormat: yaml
     requestTemplate: ""
     responseTemplate: ""
     template: go
   project: unotech
   rule:
-    rule: allow
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
   source:
     hosts:
       - '*'
     methods:
       - 'GET'
     port: 0
-    rewrite: /api/v1/mfaconfig/remove
+    rewrite: /mfaconfig/user/
     type: prefix
     url: /mahindrwrapperapisrvc/mfaconfig/user/
   targets:
@@ -62,29 +175,56 @@ spec:
       weight: 100
 type: ingress-route
 ---
+# mahindra wrapper list of mfa of user GET Method Secure API
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: mahindrwrapperapisrvcpasswordpolicysave
+  id: mahindrwrapperapisrvclistmfauserGET
   project: unotech
 spec:
   modify:
-    headers: []
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
     outputFormat: yaml
     requestTemplate: ""
     responseTemplate: ""
     template: go
   project: unotech
   rule:
-    rule: allow
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
   source:
     hosts:
       - '*'
     methods:
-      - 'POST'
+      - 'GET'
     port: 0
-    rewrite: /api/v1/passwordpolicy/save
+    rewrite: /mfaexclusion/list
     type: exact
-    url: /mahindrwrapperapisrvc/passwordpolicy/save
+    url: /mahindrwrapperapisrvc/mfaexclusion/list
   targets:
     - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
       port: 8080
@@ -94,347 +234,54 @@ spec:
       weight: 100
 type: ingress-route
 ---
+# mahindra wrapper assign user to mfa GET Method Secure API
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: mahindrwrapperapisrvcpasswordpolicy
+  id: mahindrwrapperapisrvcassignmfatouserGET
   project: unotech
 spec:
   modify:
-    headers: []
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
     outputFormat: yaml
     requestTemplate: ""
     responseTemplate: ""
     template: go
   project: unotech
   rule:
-    rule: allow
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
   source:
     hosts:
       - '*'
     methods:
       - 'GET'
     port: 0
-    rewrite: /api/v1/passwordpolicy/
-    type: prefix
-    url: /mahindrwrapperapisrvc/passwordpolicy/
-  targets:
-    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
-      port: 8080
-      scheme: http
-      type: ""
-      version: ""
-      weight: 100
-type: ingress-route
----
-api: /v1/config/projects/{project}/routing/ingress/{id}
-meta:
-  id: mahindrwrapperapisrvcpasswordpolicyupdate
-  project: unotech
-spec:
-  modify:
-    headers: []
-    outputFormat: yaml
-    requestTemplate: ""
-    responseTemplate: ""
-    template: go
-  project: unotech
-  rule:
-    rule: allow
-  source:
-    hosts:
-      - '*'
-    methods:
-      - 'POST'
-    port: 0
-    rewrite: /api/v1/passwordpolicy/update/
-    type: prefix
-    url: /mahindrwrapperapisrvc/passwordpolicy/update/
-  targets:
-    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
-      port: 8080
-      scheme: http
-      type: ""
-      version: ""
-      weight: 100
-type: ingress-route
----
-api: /v1/config/projects/{project}/routing/ingress/{id}
-meta:
-  id: mahindrwrapperapisrvcpasswordpolicysearch
-  project: unotech
-spec:
-  modify:
-    headers: []
-    outputFormat: yaml
-    requestTemplate: ""
-    responseTemplate: ""
-    template: go
-  project: unotech
-  rule:
-    rule: allow
-  source:
-    hosts:
-      - '*'
-    methods:
-      - 'GET'
-    port: 0
-    rewrite: /api/v1/passwordpolicy/search
-    type: prefix
-    url: /mahindrwrapperapisrvc/passwordpolicy/search
-  targets:
-    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
-      port: 8080
-      scheme: http
-      type: ""
-      version: ""
-      weight: 100
-type: ingress-route
----
-api: /v1/config/projects/{project}/routing/ingress/{id}
-meta:
-  id: mahindrwrapperapisrvcpasswordpolicypaswordchangedrule
-  project: unotech
-spec:
-  modify:
-    headers: []
-    outputFormat: yaml
-    requestTemplate: ""
-    responseTemplate: ""
-    template: go
-  project: unotech
-  rule:
-    rule: allow
-  source:
-    hosts:
-      - '*'
-    methods:
-      - 'GET'
-    port: 0
-    rewrite: /api/v1/passwordpolicy/paswordchangedrule/
-    type: prefix
-    url: /mahindrwrapperapisrvc/passwordpolicy/paswordchangedrule/
-  targets:
-    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
-      port: 8080
-      scheme: http
-      type: ""
-      version: ""
-      weight: 100
-type: ingress-route
----
-api: /v1/config/projects/{project}/routing/ingress/{id}
-meta:
-  id: mahindrwrapperapisrvcpasswordpolicysavepasswordcompositionrule
-  project: unotech
-spec:
-  modify:
-    headers: []
-    outputFormat: yaml
-    requestTemplate: ""
-    responseTemplate: ""
-    template: go
-  project: unotech
-  rule:
-    rule: allow
-  source:
-    hosts:
-      - '*'
-    methods:
-      - 'POST'
-    port: 0
-    rewrite: /api/v1/passwordpolicy/savepasswordcompositionrule/
-    type: prefix
-    url: /mahindrwrapperapisrvc/passwordpolicy/savepasswordcompositionrule/
-  targets:
-    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
-      port: 8080
-      scheme: http
-      type: ""
-      version: ""
-      weight: 100
-type: ingress-route
----
-api: /v1/config/projects/{project}/routing/ingress/{id}
-meta:
-  id: mahindrwrapperapisrvcresetpassword
-  project: unotech
-spec:
-  modify:
-    headers: []
-    outputFormat: yaml
-    requestTemplate: ""
-    responseTemplate: ""
-    template: go
-  project: unotech
-  rule:
-    rule: allow
-  source:
-    hosts:
-      - '*'
-    methods:
-      - 'POST'
-    port: 0
-    rewrite: /api/v1/resetpassword/
-    type: prefix
-    url: /mahindrwrapperapisrvc/resetpassword/
-  targets:
-    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
-      port: 8080
-      scheme: http
-      type: ""
-      version: ""
-      weight: 100
-type: ingress-route
----
-api: /v1/config/projects/{project}/routing/ingress/{id}
-meta:
-  id: mahindrwrapperapisrvcrevokesession
-  project: unotech
-spec:
-  modify:
-    headers: []
-    outputFormat: yaml
-    requestTemplate: ""
-    responseTemplate: ""
-    template: go
-  project: unotech
-  rule:
-    rule: allow
-  source:
-    hosts:
-      - '*'
-    methods:
-      - 'GET'
-    port: 0
-    rewrite: /api/v1/revokesession/
-    type: prefix
-    url: /mahindrwrapperapisrvc/revokesession/
-  targets:
-    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
-      port: 8080
-      scheme: http
-      type: ""
-      version: ""
-      weight: 100
-type: ingress-route
----
-api: /v1/config/projects/{project}/routing/ingress/{id}
-meta:
-  id: mahindrwrapperapisrvcunlockuser
-  project: unotech
-spec:
-  modify:
-    headers: []
-    outputFormat: yaml
-    requestTemplate: ""
-    responseTemplate: ""
-    template: go
-  project: unotech
-  rule:
-    rule: allow
-  source:
-    hosts:
-      - '*'
-    methods:
-      - 'POST'
-    port: 0
-    rewrite: /api/v1/unlockuser/
-    type: prefix
-    url: /mahindrwrapperapisrvc/unlockuser/
-  targets:
-    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
-      port: 8080
-      scheme: http
-      type: ""
-      version: ""
-      weight: 100
-type: ingress-route
----
-api: /v1/config/projects/{project}/routing/ingress/{id}
-meta:
-  id: mahindrwrapperapisrvcunlockuser
-  project: unotech
-spec:
-  modify:
-    headers: []
-    outputFormat: yaml
-    requestTemplate: ""
-    responseTemplate: ""
-    template: go
-  project: unotech
-  rule:
-    rule: allow
-  source:
-    hosts:
-      - '*'
-    methods:
-      - 'POST'
-    port: 0
-    rewrite: /api/v1/changepassword/changepassword
-    type: exact
-    url: /mahindrwrapperapisrvc/api/v1/changepassword/changepassword
-  targets:
-    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
-      port: 8080
-      scheme: http
-      type: ""
-      version: ""
-      weight: 100
-type: ingress-route
----
-api: /v1/config/projects/{project}/routing/ingress/{id}
-meta:
-  id: mahindrwrapperapisrvclistruleUser
-  project: unotech
-spec:
-  modify:
-    headers: []
-    outputFormat: yaml
-    requestTemplate: ""
-    responseTemplate: ""
-    template: go
-  project: unotech
-  rule:
-    rule: allow
-  source:
-    hosts:
-      - '*'
-    methods:
-      - 'GET'
-    port: 0
-    rewrite: /api/v1/mfaexclusion/list/
-    type: prefix
-    url: /mahindrwrapperapisrvc/mfaexclusion/list/
-  targets:
-    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
-      port: 8080
-      scheme: http
-      type: ""
-      version: ""
-      weight: 100
-type: ingress-route
----
-api: /v1/config/projects/{project}/routing/ingress/{id}
-meta:
-  id: mahindrwrapperapisrvcassignUSER
-  project: unotech
-spec:
-  modify:
-    headers: []
-    outputFormat: yaml
-    requestTemplate: ""
-    responseTemplate: ""
-    template: go
-  project: unotech
-  rule:
-    rule: allow
-  source:
-    hosts:
-      - '*'
-    methods:
-      - 'GET'
-    port: 0
-    rewrite: /api/v1/mfaexclusion/assign/
+    rewrite: /mfaexclusion/assign/
     type: prefix
     url: /mahindrwrapperapisrvc/mfaexclusion/assign/
   targets:
@@ -446,29 +293,587 @@ spec:
       weight: 100
 type: ingress-route
 ---
+# mahindra wrapper unassign user to mfa GET Method Secure API
 api: /v1/config/projects/{project}/routing/ingress/{id}
 meta:
-  id: mahindrwrapperapisrvcunassignUSER
+  id: mahindrwrapperapisrvcunassignmfatouserGET
   project: unotech
 spec:
   modify:
-    headers: []
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
     outputFormat: yaml
     requestTemplate: ""
     responseTemplate: ""
     template: go
   project: unotech
   rule:
-    rule: allow
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
   source:
     hosts:
       - '*'
     methods:
       - 'GET'
     port: 0
-    rewrite: /api/v1/mfaexclusion/unassign/
+    rewrite: /mfaexclusion/unassign/
     type: prefix
     url: /mahindrwrapperapisrvc/mfaexclusion/unassign/
+  targets:
+    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+# mahindra wrapper save password policy POST Method Secure API
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: mahindrwrapperapisrvcsavepasswordpolicyPOST
+  project: unotech
+spec:
+  modify:
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'POST'
+    port: 0
+    rewrite: /passwordpolicy/save
+    type: exact
+    url: /mahindrwrapperapisrvc/passwordpolicy/save
+  targets:
+    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+# mahindra wrapper password policy by id GET Method Secure API
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: mahindrwrapperapisrvcgetpasswordpolicybyidGET
+  project: unotech
+spec:
+  modify:
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'GET'
+    port: 0
+    rewrite: /passwordpolicy/
+    type: prefix
+    url: /mahindrwrapperapisrvc/passwordpolicy/
+  targets:
+    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+# mahindra wrapper password policy update by id PUT Method Secure API
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: mahindrwrapperapisrvcgetpasswordpolicybyidGET
+  project: unotech
+spec:
+  modify:
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'PUT'
+    port: 0
+    rewrite: /passwordpolicy/update/
+    type: prefix
+    url: /mahindrwrapperapisrvc/passwordpolicy/update/
+  targets:
+    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+# mahindra wrapper password policy search GET Method Secure API
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: mahindrwrapperapisrvcsearchpasswordpolicyGET
+  project: unotech
+spec:
+  modify:
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'GET'
+    port: 0
+    rewrite: /passwordpolicy/search/
+    type: prefix
+    url: /mahindrwrapperapisrvc/passwordpolicy/search/
+  targets:
+    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+# mahindra wrapper password policy get password policy changed rule GET Method Secure API
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: mahindrwrapperapisrvcpaswordchangedruleGET
+  project: unotech
+spec:
+  modify:
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'GET'
+    port: 0
+    rewrite: /passwordpolicy/paswordchangedrule/
+    type: prefix
+    url: /mahindrwrapperapisrvc/passwordpolicy/paswordchangedrule/
+  targets:
+    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+# mahindra wrapper password policy save password policy password composition post Method Secure API
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: mahindrwrapperapisrvcsavepasswordcompositionrulePOST
+  project: unotech
+spec:
+  modify:
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'PUT'
+    port: 0
+    rewrite: /passwordpolicy/savepasswordcompositionrule/
+    type: prefix
+    url: /mahindrwrapperapisrvc/passwordpolicy/savepasswordcompositionrule/
+  targets:
+    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+# mahindra wrapper reset password post Method Secure API
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: mahindrwrapperapisrvcsaveresetpasswordPOST
+  project: unotech
+spec:
+  modify:
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'POST'
+    port: 0
+    rewrite: /resetpassword/
+    type: prefix
+    url: /mahindrwrapperapisrvc/resetpassword/
+  targets:
+    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+# mahindra wrapper reset password post Method Secure API
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: mahindrwrapperapisrvcsaveresetpasswordPOST
+  project: unotech
+spec:
+  modify:
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'GET'
+    port: 0
+    rewrite: /revokesession/
+    type: prefix
+    url: /mahindrwrapperapisrvc/revokesession/
+  targets:
+    - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
+      port: 8080
+      scheme: http
+      type: ""
+      version: ""
+      weight: 100
+type: ingress-route
+---
+# mahindra wrapper unlockuser POST Method Secure API
+api: /v1/config/projects/{project}/routing/ingress/{id}
+meta:
+  id: mahindrwrapperapisrvcunlockuserPOST
+  project: unotech
+spec:
+  modify:
+    headers:
+      - key: userid
+        op: set
+        value: auth.userId
+      - key: tenant
+        op: set
+        value: auth.tenantId
+      - key: roles
+        op: set
+        value: auth.roles
+      - key: principal
+        op: set
+        value: auth.sub
+    outputFormat: yaml
+    requestTemplate: ""
+    responseTemplate: ""
+    template: go
+  project: unotech
+  rule:
+    rule: and
+    clauses:
+      - rule: authenticated
+      - rule: or
+        clauses:
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1: ORG_ADMIN
+          - rule: match
+            eval: in
+            type: string
+            f2: args.auth.roles
+            f1:  DOMAIN_ADMIN
+  source:
+    hosts:
+      - '*'
+    methods:
+      - 'POST'
+    port: 0
+    rewrite: /unlockuser/
+    type: prefix
+    url: /mahindrwrapperapisrvc/unlockuser/
   targets:
     - host: mahindrwrapperapisrvc.unotech.svc.cluster.local
       port: 8080

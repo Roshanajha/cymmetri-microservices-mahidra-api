@@ -25,6 +25,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,7 +61,7 @@ public class PasswordPolicyController {
 		return ResponseEntity.ok().body(response);
 	}
 
-	@PostMapping("/update/{id}")
+	@PutMapping("/update/{id}")
 	public ResponseEntity<Response> updatePasswordPolicy(@PathVariable(required = true) String id,
 			@RequestBody PasswordPolicyDto passwordPolicyDto) {
 		final PasswordPolicyResponse data = this.passwordPolicyService.update(id, passwordPolicyDto);
@@ -97,7 +98,7 @@ public class PasswordPolicyController {
 		return ResponseEntity.ok().body(response);
 	}
 
-	@PostMapping("/savepasswordcompositionrule/{id}")
+	@PutMapping("/savepasswordcompositionrule/{id}")
 	public ResponseEntity<Response> savePasswordCompositionRule(@PathVariable(required = true) String id,
 			@RequestBody PasswordPolicyComposition passwordPolicyComposition) {
 		final PasswordPolicyComposition data = this.passwordPolicyService.savePasswordCompositionRule(id,

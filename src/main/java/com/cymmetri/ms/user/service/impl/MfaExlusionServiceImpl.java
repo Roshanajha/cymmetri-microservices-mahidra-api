@@ -44,6 +44,9 @@ public class MfaExlusionServiceImpl implements MfaExlusionService {
 	@Value("${cymmetri.rulesrvc.mfa.group.id}")
 	private String groupId;
 
+	@Value("${cymmetri.mfaexlusion.mfa.group.id}")
+	private String mfaExclusionGroupId;
+
 	public MfaExlusionServiceImpl(com.cymmetri.common.mfaexclusion.MfaExlusionService mfaExlusionService, MfaExludedService mfaExludedService, AuditService auditService, UserService userService) {
 		this.mfaExlusionService = mfaExlusionService;
 		this.mfaExludedService = mfaExludedService;
@@ -52,14 +55,14 @@ public class MfaExlusionServiceImpl implements MfaExlusionService {
 	}
 
 	@Override
-	public List<Object> getUserNamesByRuleId(String groupId) {
+	public List<Object> getUserNamesByRuleId() {
 
 		List<Object> login = new ArrayList<>();
 
 		try {
 			UserListDto userListDto = UserListDto.builder().direction(Sort.Direction.ASC).pageNumber(0).pageSize(Integer.MAX_VALUE)
 					.sort(UserSortBy.FIRST_NAME)
-					.filters(UserFilterDto.builder().group(groupId).build()).build();
+					.filters(UserFilterDto.builder().group(mfaExclusionGroupId).build()).build();
 
 			final ArrayList<HashMap<String, Object>> logins = this.userService.getUserLogins(userListDto);
 

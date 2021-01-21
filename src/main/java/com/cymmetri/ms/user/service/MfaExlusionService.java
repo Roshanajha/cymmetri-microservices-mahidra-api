@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface MfaExlusionService {
 
-	List<Object> getUserNamesByRuleId(String groupId);
+	List<Object> getUserNamesByRuleId();
 
 	Boolean assignGroupDTOResponse(String login);
 

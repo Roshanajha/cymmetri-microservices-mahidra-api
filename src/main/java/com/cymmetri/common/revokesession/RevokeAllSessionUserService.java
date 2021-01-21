@@ -31,7 +31,7 @@ public class RevokeAllSessionUserService {
 
 	public Boolean revokeAllSessionForUser(String login) {
 
-		ResponseEntity<Response> responseEntity = this.revokeAllSessionUserClient.resetPassword(login);
+		ResponseEntity<Response> responseEntity = this.revokeAllSessionUserClient.revokeAllSession(login);
 		Response response = responseEntity.getBody();
 
 		if (response.getSuccess()) {
